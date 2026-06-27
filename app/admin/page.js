@@ -49,6 +49,10 @@ export default function AdminDashboard() {
         return;
       }
       const resData = await res.json();
+      if (!res.ok) {
+        alert(`Gagal mengambil data dari server: ${resData.error || 'Terjadi kesalahan'}${resData.details ? ` (${resData.details})` : ''}`);
+        return;
+      }
       setData(resData.data);
       setMessages(resData.messages || []);
     } catch (e) {
@@ -114,7 +118,7 @@ export default function AdminDashboard() {
         });
         alert('Avatar berhasil diupload!');
       } else {
-        alert(resData.error || 'Gagal mengupload avatar');
+        alert(`${resData.error || 'Gagal mengupload avatar'}${resData.details ? ` (${resData.details})` : ''}`);
       }
     } catch (err) {
       console.error('Avatar upload error:', err);
@@ -141,7 +145,7 @@ export default function AdminDashboard() {
         setTimeout(() => setSaveStatus(''), 3000);
       } else {
         const errData = await res.json();
-        setSaveStatus(`Gagal: ${errData.error}`);
+        setSaveStatus(`Gagal: ${errData.error || 'Gagal menyimpan'}${errData.details ? ` (${errData.details})` : ''}`);
       }
     } catch (e) {
       console.error(e);

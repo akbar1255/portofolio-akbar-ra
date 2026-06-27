@@ -26,6 +26,6 @@ export async function POST(req) {
     return NextResponse.json({ success: true, message: 'Pesan berhasil dikirim' });
   } catch (error) {
     console.error('Contact submit API error:', error);
-    return NextResponse.json({ error: 'Gagal mengirim pesan' }, { status: 500 });
+    return NextResponse.json({ error: 'Gagal mengirim pesan', details: error.message }, { status: 500 });
   }
 }

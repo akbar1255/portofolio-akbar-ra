@@ -20,7 +20,7 @@ export async function POST(req) {
 
     const filename = Date.now() + '-' + file.name.replace(/[^a-zA-Z0-9.-]/g, '_');
 
-    if (!process.env.BLOB_READ_WRITE_TOKEN) {
+    if (process.env.VERCEL !== '1' && !process.env.BLOB_READ_WRITE_TOKEN) {
       // Local upload fallback
       const uploadDir = path.join(process.cwd(), 'public', 'uploads');
       if (!fs.existsSync(uploadDir)) {
@@ -45,6 +45,6 @@ export async function POST(req) {
     return NextResponse.json({ url: blob.url });
   } catch (error) {
     console.error('Upload API error:', error);
-    return NextResponse.json({ error: 'Gagal mengupload file' }, { status: 500 });
+    return NextResponse.json({ error: 'Gagal mengupload file', details: error.message }, { status: 500 });
   }
 }

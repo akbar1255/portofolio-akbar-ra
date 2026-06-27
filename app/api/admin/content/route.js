@@ -16,7 +16,7 @@ export async function GET(req) {
     return NextResponse.json({ data, messages });
   } catch (error) {
     console.error('Admin GET content error:', error);
-    return NextResponse.json({ error: 'Failed to fetch admin data' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to fetch admin data', details: error.message }, { status: 500 });
   }
 }
 
@@ -32,6 +32,6 @@ export async function PUT(req) {
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error('Save content error:', error);
-    return NextResponse.json({ error: 'Failed to save content' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to save content', details: error.message }, { status: 500 });
   }
 }
