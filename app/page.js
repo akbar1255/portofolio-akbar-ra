@@ -21,6 +21,9 @@ export default async function Home() {
     <>
       <CustomCursor />
       <ScrollReveal />
+      <div className="bg-orb orb-1"></div>
+      <div className="bg-orb orb-2"></div>
+      <div className="bg-orb orb-3"></div>
       <Header />
       <main>
         <HeroSection profile={data.profile} />
