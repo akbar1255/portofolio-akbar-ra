@@ -2109,6 +2109,7 @@ code {
 .hero-title, .section-title {
     background: linear-gradient(135deg, #ffffff 40%, #c1ffd4 80%, var(--primary) 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     display: inline-block;
 }
@@ -2116,6 +2117,7 @@ code {
 .highlight-text {
     background: linear-gradient(135deg, #ffffff 20%, var(--primary) 100%);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
     text-shadow: none; /* remove standard shadow so gradient works */
     display: inline-block;
